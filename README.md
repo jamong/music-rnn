@@ -6,7 +6,7 @@ Machine Learning / Deep Learning - Compose Waltes
 - train 된 스타일로 새로운 곡을 컴퓨터가 만들어내도록하는
 - Deep Learning 을 이용한 간단한 Python Code
 
-Machine Learning / Deep Learning 을 이용하여 간단한 음악 작곡하기
+Machine Learning / Deep Learning 을 이용한 간단한 음악 작곡
 --------
 >
 - Deep Learning 에 대해서 잘 모른다해도
