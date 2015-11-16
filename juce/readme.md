@@ -1,12 +1,14 @@
-Machine Learning / Deep Learning 을 이용해서 간단하게 음악 작곡하기
-======================================================================
+music-rnn
+========
+Machine Learning / Deep Learning - Compose Waltes
 >
 - midi files 를 data set 으로 사용하여 midi files 의 notes(음정보) 에 대하여 training 한 후
 - train 된 스타일로 새로운 곡을 컴퓨터가 만들어내도록하는
 - Deep Learning 을 이용한 간단한 Python Code
 
-
-
+Machine Learning / Deep Learning 을 이용한 간단한 음악 작곡
+--------
+>
 - Deep Learning 에 대해서 잘 모른다해도
 - 위의 코드들과 아래의 Dependencies 를 참조하여 수정 및 테스트를 반복하다보면
 - 수식에 대한 지식여부와는 관계없이
