@@ -249,3 +249,4 @@ filename_result_predict = DIR_RESULTS + 'rnn_lstm_predict_{0}.txt'.format(dateti
 # ================================================================================
 
 ```
+- 추가로 특정 폴더의 특정 string을 포함한 파일만 training 에 이용하고 싶을 경우 위 소스 코드 중 ```target_str = ""``` 부분에 원하는 파일들이 공통으로 가지고 있는 string 을 적어주면 된다.
