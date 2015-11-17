@@ -129,7 +129,7 @@ $ python train_piano.py
 - train_piano.py 를 python 을 이용하여 컴파일 및 실행
   
   * 작곡된 waltz 곡 저장되는 폴더
-    * 소스 코드를 보면
+    * train_piano.py 소스 코드를 보면
     ```
     if iteration % 10 == 0:
     ```
@@ -195,4 +195,51 @@ music-rnn
     │       ├── train
     │       └── valid
 ```
-- 위의 **기본적인 사용 방법** 을 그대로 따라서 실행하면 된다.
+- 예를 들어 Data Set 중 JSB_Chorales set 을 이용하고 싶다면 train_piano.py 의 source code 중 data set 을 설정하는 부분의 code 를 다음과 같이 수정해준다.
+```python
+# ================================================================================
+#
+# 한 번에 모든 midi files 을 이용하여 train 하고 싶을 경우 다음의 경로 사용.
+#
+
+DIR_DATA_SRCs = ["/data/JSB_Chorales", "/data/MuseData", "/data/Nottingham", "/data/Piano-midi.de"]
+DIR_TTV = ["/test", "/train", "/valid"]
+
+# examples 1
+# JSB_chorales 의 train data 로만 training 하고 싶을 경우 - 다음 주석을 풀어줄 것
+path_train = os.getcwd() + DIR_DATA_SRCs[0] + DIR_TTV[1]
+path_test = os.getcwd() + DIR_DATA_SRCs[0] + DIR_TTV[0]
+
+# examples 2
+# /data/MuseData/ 폴더의 bach midi files 로만 train
+# target_str = "bach"
+# path_train = os.getcwd() + DIR_DATA_SRCs[1] + DIR_TTV[1]
+# path_test = os.getcwd() + DIR_DATA_SRCs[1] + DIR_TTV[0]
+
+# examples 3
+# /data/Nottingham/ 폴더 midi files 로만 train
+# path_train = os.getcwd() + DIR_DATA_SRCs[2] + DIR_TTV[1]
+# path_test = os.getcwd() + DIR_DATA_SRCs[2] + DIR_TTV[0]
+
+
+# ================================================================================
+#
+# 가져올 sample 이 포함된 폴더 이름과 가져올 파일에 포함된 string setting
+#
+# target_str = ""                         # 폴더의 모든 파일 할거면 파일 이름에 포함된 string 적지 말 것
+# TARGET_FOLDER = "waltzes"               # training 할 파일이 들어있는 폴더 이름
+# path_train = "./data_for_train/" + TARGET_FOLDER
+
+# init paths of Waltzes
+# DIR_WEIGHTS = "./wts_Waltzes/"                      # save weights file
+# DIR_RESULTS = "./predict_Waltzes/"                  # save debug log
+# DIR_PREDICTED_MIDI = "./predMidi_Waltzes/"          # save predicted(created) midi file
+DIR_WEIGHTS = "./wts_JSB/"                      # save weights file
+DIR_RESULTS = "./predict_JSB/"                  # save debug log
+DIR_PREDICTED_MIDI = "./predMidi_JSB/"          # save predicted(created) midi file
+
+# file name to save
+filename_result_predict = DIR_RESULTS + 'rnn_lstm_predict_{0}.txt'.format(datetime.now().strftime("%Y.%m.%d.%H:%M:%S"))
+# ================================================================================
+
+```
