@@ -91,9 +91,8 @@ if not os.path.exists(DIR_PREDICTED_MIDI):
 
 ##
 #
-# data set 설정하기 (가져오기)
+# set Data Set (load Data Set)
 #
-
 # target_str : string info what is included at files u want to load for training
 #              set this variable at block "define constant values"
 #              example : target_str = "reels"
@@ -157,7 +156,6 @@ ModelUtil.layer_info(model)
 # if there is weigts, load weights
 #
 
-# 자동 : 가장 최근의 마지막 wts 가져오기
 # load automatically : load weights which is containing the latest weights infomation
 try:
     wts_list = os.listdir(DIR_WEIGHTS)
@@ -169,6 +167,7 @@ except:
     pass
 
 # # load passively
+# #
 # # waltzes wts file ==> loss: 1.5240 - acc: 0.3573
 # # ./wts_Waltzes/train_piano_wts_seq_model_2015.11.11.23:52:29.wts
 # filename_wts = "train_piano_wts_seq_model_2015.11.11.23:52:29.wts"
@@ -233,7 +232,6 @@ def sample_song(seed, midi_file_path):
         # break if end of sequence (EOS) is found
         if np.any(ix == 128):
             break
-        # 출력값에 저장.
         # save at predict variable
         if i < seq_length - 1:
             X_predict[0, i + 1, ix] = 1
