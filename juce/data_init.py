@@ -24,7 +24,6 @@ import os.path
 
 class Midi_Util(object):
     def __init__(self):
-        # TODO - 이 부분 자동으로 계산하는 부분 make 할 것
         # index 나누는 기준
         # midi file 을 변환하고 나면 일단 1024(4분음표) 기준으로 바뀐다.
         # tick_step = mf.ticksPerQuarterNote / 2            # tick_setp 계산 공식
