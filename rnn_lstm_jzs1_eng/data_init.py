@@ -60,7 +60,6 @@ class Midi_Util(object):
 
         #
         # convert data of each file to one-hot vector, and save one-hot vector with X_train
-        # 모든 파일의 데이터를 파일별로 convert 해서 one-hot vector 로 저장하기
         #
 
         samples_cnt = 0                                         # set sample`s start number : which midi file is
