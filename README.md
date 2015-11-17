@@ -166,7 +166,33 @@ except:
 - 위의 **기본적인 사용 방법**을 그대로 따라서 실행하면 된다.
 
 ### Data Set 바꾸기
-위의 자료를 사용하고자 하는 경우 소스를 다운 받은 후, 압축을 풀고 juce/data 아래에 data set 을 위치시킬 것.
-Waltzes 작곡을 위한 overfitted 된 weight 는 juce/wts_Waltzes 폴더에 포함되어있음.
-직접 overfitted 된 weight 를 구하고 싶은 경우
-juce/data_for_train/ 에 포함되어 있는 waltes midi files 를 이용할 것.
+- Train / Test 에 사용했던 Dataset 인 Modeling Temporal Dependencies in High-Dimensional Sequences 의 data set 을 사용해보고 싶은 경우
+- http://www-etud.iro.umontreal.ca/~boulanni/icml2012
+- 위의 링크로 이동하여 Source 파일들을 다운받은 후,
+  - Piano-midi.de1 : Source (124 files, 951 KB) or Piano-roll (7.1 MB)
+  - Nottingham2 : Source (1037 files, 676.1 KB) or Piano-roll (23.2 MB)
+  - MuseData3 : Source (783 files, 3.0 MB) or Piano-roll (30.1 MB)
+  - JSB Chorales : Source (382 files, 210 KB) or Piano-roll (2.0 MB)
+- 압축을 풀고 music-rnn/rnn_lstm_jzs1/data 폴더 아래에 다음과 같이 위치시켜준 후,
+```
+music-rnn
+└── rnn_lstm_jzs1
+    ├── data
+    │   ├── JSB_Chorales
+    │   │   ├── test
+    │   │   ├── train
+    │   │   └── valid
+    │   ├── MuseData
+    │   │   ├── test
+    │   │   ├── train
+    │   │   └── valid
+    │   ├── Nottingham
+    │   │   ├── test
+    │   │   ├── train
+    │   │   └── valid
+    │   └── Piano-midi.de
+    │       ├── test
+    │       ├── train
+    │       └── valid
+```
+- 위의 **기본적인 사용 방법** 을 그대로 따라서 실행하면 된다.
