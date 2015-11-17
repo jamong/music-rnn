@@ -56,7 +56,7 @@ Dependencies
 
 
 
-Train / Test 에 사용했던 Dataset
+Train / Test 에 사용한 Dataset
 --------
 ### Modeling Temporal Dependencies in High-Dimensional Sequences: Application to Polyphonic Music Generation and Transcription
 - http://www-etud.iro.umontreal.ca/~boulanni/icml2012
