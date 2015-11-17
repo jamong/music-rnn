@@ -109,7 +109,7 @@ music-rnn
 ```
 
 
-### 기본적인 사용 방법
+### 기본 사용 방법
 - 기본적으로 train_piano.py 파일을 python 으로 바로 실행시킬 경우
   * /music-rnn/rnn_lstm_jzs1/wts_Waltzes/train_piano_wts_seq_model_2015.11.11.23:52:29.wt
   * 위의 weights 파일을 LSTM(Long Short Term Memory) training model 이 load
@@ -139,8 +139,8 @@ $ python train_piano.py
     ```
     * /predMidi_Waltzes 폴더에 저장하게 된다.
 
-### weights 파일을 직접 구해보고 싶은 경우
-- 기본적으로 소스 코드는 다음과 같이 weights 파일이 존재한다면 가장 최근의 파일을 load 하여 model 에 적용되도록 되어있다.
+### weights 파일을 직접 구해보기 / 다른 weights file 이용하기
+- 기본적으로 train_piano.py 소스 코드는 다음과 같이 weights 파일이 존재한다면 가장 최근의 파일을 load 하여 model 에 적용되도록 되어있다.
 ```python
 # 자동 : 가장 최근의 마지막 wts 가져오기
 try:
@@ -162,8 +162,14 @@ except:
 # except:
 #     pass
 ```
-- 직접 weights 파일을 구해보고 싶은 경우 music-rnn/rnn_lstm_jzs1/wts_Waltzes 폴더의 train_piano_wts_seq_model_2015.11.11.23:52:29.wts 파일을 삭제하거나 임의의 폴더로 옮겨놓은 후
-- 위의 **기본적인 사용 방법**을 그대로 따라서 실행하면 된다.
+- 직접 weights 파일을 구해보고 싶은 경우
+  * music-rnn/rnn_lstm_jzs1/wts_Waltzes 폴더의 train_piano_wts_seq_model_2015.11.11.23:52:29.wts 파일을 삭제하거나 임의의 폴더로 옮겨놓은 후
+  * 위의 **기본 사용 방법**을 그대로 따라서 실행하면 된다.
+- 다른 weights 파일을 이용하고 싶은 경우
+  * 위의 source code 중 자동이라고 comment 된 블럭을 comment 처리 한 후, 수동 comment 의 블럭의 comment 를 해제하고
+  * 이용하고자 하는 weights 파일을 DIR_WEIGHTS 폴더에 위치시킨 후,
+  * filename_wts = "파일 이름" 을 적어주고,
+  * 위의 **기본 사용 방법**을 그대로 따라서 실행하면 된다.
 
 ### Data Set 바꾸기
 - Train / Test 에 사용했던 Dataset 인 Modeling Temporal Dependencies in High-Dimensional Sequences 의 data set 을 사용해보고 싶은 경우
