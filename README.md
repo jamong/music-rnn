@@ -18,6 +18,13 @@ Machine Learning / Deep Learning 을 이용한 간단한 음악 작곡
 
 Dependencies
 --------
+### OpenBLAS
+- an optimized BLAS(Basic Linear Algebra subroutines) library based on [GotoBLAS2](https://www.tacc.utexas.edu/research-development/tacc-software/gotoblas2) 1.13 BSD version.
+- NumPy 사용을 위해서 필요
+- OpenBLAS 를 install 하기 위해서는 gfortran 을 먼저 설치할 것
+- http://www.openblas.net/
+- https://github.com/xianyi/OpenBLAS/wiki
+
 ### NumPy
 - 수치적 배열과 고급 데이터 분석을 편리하게 해주는 Python Package
 - SciPy 와 함께 널리 쓰임.
@@ -54,16 +61,112 @@ Train / Test 에 사용했던 Dataset
 ### Modeling Temporal Dependencies in High-Dimensional Sequences: Application to Polyphonic Music Generation and Transcription
 - http://www-etud.iro.umontreal.ca/~boulanni/icml2012
 - 기본적으로 위의 midi files data set 을 사용하여 train 및 test 를 수행했음.
-- 위의 자료를 사용하고자 하는 경우 소스를 다운 받은 후, 압축을 풀고 juce/data 아래에 data set 을 위치시킬 것.
-- Waltzes 작곡을 위한 overfitted 된 weight 는 juce/wts_Waltzes 폴더에 포함되어있음.
-- 직접 overfitted 된 weight 를 구하고 싶은 경우
-  * juce/data_for_train/ 에 포함되어 있는 waltes midi files 를 이용할 것.
-
+- 위의 data set 을 이용하여 직접  training 을 해보고 싶을 경우 아래의 **Usage : Data Set 바꾸기** 참고
 
 
 Usage
 --------
-```sh
+### Data Set, Source Code 구성
+```
+music-rnn
+├── README.md
+└── rnn_lstm_jzs1
+    ├── data
+    │   ├── JSB_Chorales
+    │   │   ├── test
+    │   │   ├── train
+    │   │   └── valid
+    │   ├── MuseData
+    │   │   ├── test
+    │   │   ├── train
+    │   │   └── valid
+    │   ├── Nottingham
+    │   │   ├── test
+    │   │   ├── train
+    │   │   └── valid
+    │   └── Piano-midi.de
+    │       ├── test
+    │       ├── train
+    │       └── valid
+    ├── data_for_train
+    │   └── waltzes
+    │       ├── waltzes_simple_chords_1.mid
+    │       ├── waltzes_simple_chords_2.mid
+    │       ├── waltzes_simple_chords_3.mid
+    │       ├── waltzes_simple_chords_6.mid
+    │       └── waltzes_simple_chords_7.mid
+    ├── predict_Waltzes
+    ├── predMidi_Waltzes
+    │   └── bach_lstm_pred_midi_2015.11.11.15:32:34.mid
+    ├── wts_Waltzes
+    │   └── train_piano_wts_seq_model_2015.11.11.23:52:29.wts
+    ├── __init__.py
+    ├── data_init.py
+    ├── model_util.py
+    ├── train_piano.py
+    └── readme.md 
+
+```
+
+
+### 기본적인 사용 방법
+- 기본적으로 train_piano.py 파일을 python 으로 바로 실행시킬 경우
+  * /music-rnn/rnn_lstm_jzs1/wts_Waltzes/train_piano_wts_seq_model_2015.11.11.23:52:29.wt
+  * 위의 weights 파일을 LSTM(Long Short Term Memory) training model 이 load
+  * 그 후 music-rnn/rnn_lstm_jzs1/data_for_train/waltzes 폴더 안에 있는 midi 형식으로 된 5개의 waltes 곡을 이용하여 training 시작
+
+```python
+$ git clone https://github.com/jamonglab/music-rnn.git
+$ cd music-rnn
 $ python train_piano.py
 ```
-- 세부적인 조절은 소스 코드의 주석을 참조할 것
+- git clone(복사) 명령어를 이용해서 github 에서 music-rnn project 를 download
+  * git/github 에 대한 설명 및 사용법
+    * [완전 초보를 위한 깃허브](https://nolboo.github.io/blog/2013/10/06/github-for-beginner/)
+    * [git - 간편 안내서](https://rogerdudler.github.io/git-guide/index.ko.html)
+    * [git-scm.com](http://git-scm.com/book/ko/v2/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-%EB%B2%84%EC%A0%84-%EA%B4%80%EB%A6%AC%EB%9E%80%3F)
+- clone 이 저장된 music-rnn 폴더로 이동
+- train_piano.py 를 python 을 이용하여 컴파일 및 실행
+  
+  * 작곡된 waltz 곡 저장되는 폴더
+    * 소스 코드를 보면
+    ```
+    if iteration % 10 == 0:
+    ```
+    * training 실행 시 iteration 을 10번 반복할 때 마다 machine 이 배운 결과 생성된 weight 를 이용하여 새로운 waltes 곡을 composing 하여
+    ```
+    DIR_PREDICTED_MIDI = "./predMidi_Waltzes/"          # save predicted(created) midi file
+    ```
+    * /predMidi_Waltzes 폴더에 저장하게 된다.
+
+### weights 파일을 직접 구해보고 싶은 경우
+- 기본적으로 소스 코드는 다음과 같이 weights 파일이 존재한다면 가장 최근의 파일을 load 하여 model 에 적용되도록 되어있다.
+```python
+# 자동 : 가장 최근의 마지막 wts 가져오기
+try:
+    wts_list = os.listdir(DIR_WEIGHTS)
+    if len(wts_list) != 0:
+        wts_list.sort()
+        model.load_weights(DIR_WEIGHTS + wts_list[-1])
+        print "\n...... Loaded weights file : {0} ......".format(wts_list[-1])
+except:
+    pass
+
+# # 수동 : 가져올 wts 파일을 파일이름으로 지정해주기
+# # waltzes wts file ==> loss: 1.5240 - acc: 0.3573
+# # ./wts_Waltzes/train_piano_wts_seq_model_2015.11.11.23:52:29.wts
+# filename_wts = "train_piano_wts_seq_model_2015.11.11.23:52:29.wts"
+# try:
+#     model.load_weights(DIR_WEIGHTS + filename_wts)
+#     print "\n... Loaded weights file : {0} ...".format(filename_wts)
+# except:
+#     pass
+```
+- 직접 weights 파일을 구해보고 싶은 경우 music-rnn/rnn_lstm_jzs1/wts_Waltzes 폴더의 train_piano_wts_seq_model_2015.11.11.23:52:29.wts 파일을 삭제하거나 임의의 폴더로 옮겨놓은 후
+- 위의 **기본적인 사용 방법**을 그대로 따라서 실행하면 된다.
+
+### Data Set 바꾸기
+위의 자료를 사용하고자 하는 경우 소스를 다운 받은 후, 압축을 풀고 juce/data 아래에 data set 을 위치시킬 것.
+Waltzes 작곡을 위한 overfitted 된 weight 는 juce/wts_Waltzes 폴더에 포함되어있음.
+직접 overfitted 된 weight 를 구하고 싶은 경우
+juce/data_for_train/ 에 포함되어 있는 waltes midi files 를 이용할 것.
