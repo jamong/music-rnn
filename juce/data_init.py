@@ -27,6 +27,7 @@ class Midi_Util(object):
         # index 나누는 기준
         # midi file 을 변환하고 나면 일단 1024(4분음표) 기준으로 바뀐다.
         # tick_step = mf.ticksPerQuarterNote / 2            # tick_setp 계산 공식
+        # tick_step 을 512 로 init 했으나, 실제로는 midi 파일을 읽는 부분에서 자동으로 다시 계산함.
         self.tick_step = 512
 
         self.samples_num = 0                                # samples number, will initialized
