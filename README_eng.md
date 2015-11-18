@@ -1,18 +1,18 @@
 music-rnn
 ========
-Machine Learning / Deep Learning - Compose Waltes
+Machine Learning / Deep Learning - Compose Waltz
 >
-- After executing Trainging with notes information of midi files of Data Set,
+- After training with notes information of midi files of Data Set,
 - machine will compose simple trained style music.
-- This Project is composed of simple Python Codes to do above processes.
+- This Project is composed of simple python codes to do above process.
 
 Composing simple music with Machine Learning / Deep Learning
 --------
 >
-- If you don`t know well about Deep Learning,
-- as you repeat and refer to the **above Python Codes** and **below Dependencies**,
+- Even if you don`t have prior knowledge of Deep Learning,
+- as you modify and test following the **python codes** and the **dependencies in below**,
 - without knowledge of mathematics,
-- basically you can have a experience about Deep Learning for training something with Python Code
+- basically you can experience glimpse of Deep Learning in python.
 
 
 
@@ -20,8 +20,8 @@ Dependencies
 --------
 ### OpenBLAS
 - an optimized BLAS(Basic Linear Algebra subroutines) library based on [GotoBLAS2](https://www.tacc.utexas.edu/research-development/tacc-software/gotoblas2) 1.13 BSD version.
-- Need to use NumPy
-- Have to install **gfortran** before install OpenBLAS
+- Requires NumPy
+- **gfortran** is required before installing OpenBLAS
 - http://www.openblas.net/
 - https://github.com/xianyi/OpenBLAS/wiki
 
@@ -31,7 +31,7 @@ Dependencies
   * sophisticated (broadcasting) functions
   * tools for integrating C/C++ and Fortran code
   * useful linear algebra, Fourier transform, and random number capabilities
-- Normally used with SciPy universally
+- Normally used with SciPy in combination
 - http://www.numpy.org/
 
 ### SciPy
@@ -72,8 +72,8 @@ Data Set for Train / Test
 --------
 ### Modeling Temporal Dependencies in High-Dimensional Sequences: Application to Polyphonic Music Generation and Transcription
 - http://www-etud.iro.umontreal.ca/~boulanni/icml2012
-- Basically, I used above midi files data set to train and test.
-- If you want to train with above Data Set directly, wrt below **Usage : Change Data Set**
+- Above midi files data set was used to train and test.
+- If you want to train with above Data Set directly, please refer **Usage : Change Data Set** below
 
 
 Usage
@@ -122,7 +122,7 @@ music-rnn
 
 
 ### Basic Usage
-- when you just execute train_piano.py with Python Compiler
+- when executing train_piano.py with Python Compiler
   * /music-rnn/rnn_lstm_jzs1_eng/wts_Waltzes/train_piano_wts_seq_model_2015.11.11.23:52:29.wt
   * LSTM(Long Short Term Memory) training model will load above weights file
   * next, start training with 5 midi files in music-rnn/rnn_lstm_jzs1_eng/data_for_train/waltzes
@@ -134,21 +134,21 @@ $ python train_piano.py
 ```
 - use command **git clone(copy)**, download(clone) music-rnn project
 - move to directory, music-rnn project downloaded
-- with Python, compile and execute train_piano.py
+- execute train_piano.py
   
-  * directory to save composed waltzes (midi format)
-    * see source code of train_piano.py
+  * directory to save composed waltz (midi format)
+    * in source code of train_piano.py
     ```
     if iteration % 10 == 0:
     ```
     * during training, prediction is processed at every 10th iteration
-    * after prediction, source code compose new waltz with using weight calculated
+    * after prediction, it composes new waltz with using calculated weights.
     ```
     DIR_PREDICTED_MIDI = "./predMidi_Waltzes/"          # save predicted(created) midi file
     ```
     * and new waltz will be saved at /predMidi_Waltzes automatically.
 
-### Getting weights file personally / Using another weights file
+### Creating weights file / Using other weights file
 - If you don`t edit any source code of this project, train_piano.py will load weights file(see below source code) and apply it to Training Model.
 ```python
 # load automatically : load weights which is containing the latest weights infomation
@@ -172,18 +172,18 @@ except:
 # except:
 #     pass
 ```
-- Getting weights file personally
+- Creating weights file
   * delete music-rnn/rnn_lstm_jzs1_eng/wts_Waltzes/train_piano_wts_seq_model_2015.11.11.23:52:29.wts file
   * or move above file to another path
-  * just following above **Basic Usage**
+  * just follow above **Basic Usage**
 - Using another weights file
   * (see above source codes) comment **load automatically block**, and uncomment **load passively block**,
-  * next, mov another weights file what you wanna use for train to DIR_WEIGHTS directory,
-  * write the wts file name to **filename_wts = "another_file_name"**,
-  * just following above **Basic Usage**
+  * next, move other weights file that you want to use for train to DIR_WEIGHTS directory,
+  * write the weights file name to **filename_wts = "other_file_name"**,
+  * follow above **Basic Usage**
 
 ### Change Data Set
-- If you want to use Data set of Modeling Temporal Dependencies in High-Dimensional Sequences what I used to have a traing and testing,
+- In case of using Data set of Modeling Temporal Dependencies in High-Dimensional Sequences as in this source,
 - http://www-etud.iro.umontreal.ca/~boulanni/icml2012
 - move to above link, and download below Source files (4 files)
   - Piano-midi.de1 : Source (124 files, 951 KB) or Piano-roll (7.1 MB)
@@ -213,7 +213,7 @@ music-rnn
     │       ├── train
     │       └── valid
 ```
-- for example, if you want to use JSB_Chorales set,
+- for example, to use JSB_Chorales set,
 - edit source codes (block of setting Data Set) of train_piano.py like below codes
 ```python
 # ================================================================================
@@ -263,4 +263,5 @@ filename_result_predict = DIR_RESULTS + 'rnn_lstm_predict_{0}.txt'.format(dateti
 # ================================================================================
 
 ```
-- in addition, if you want to use specific files including specific strings(letters), insert specific string what is included by all files mutually to ```target_str = "write_specific_string_here"```
+- in addition, if you want to use files that contain same name in a folder, insert the same name in ```target_str = "shared_name"```
+  * for example, in a folder, there are files named 'bach001.mid', 'bach002.mid', etc, modify target_str variable as ```target_str = "bach"```
