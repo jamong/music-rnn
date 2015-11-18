@@ -1,3 +1,5 @@
+[[English](README.md)]  [[한국어](README_kor.md)]
+
 music-rnn
 ========
 Machine Learning / Deep Learning - Compose Waltz
