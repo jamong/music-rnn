@@ -44,7 +44,7 @@ Dependencies
 - http://keras.io/
 
 ### UnRoll
-- Zulko 라는 사람이 Piano Rolls 를 Python, LilyPond 를 이용하여 Movie 와 midi 파일의 음악을 악보로 옮기기 위해 만든 프로젝트
+- Zulko 라는 사람이 Piano Rolls 를 Python, LilyPond 를 이용하여 Piano Roll Movie 와 midi 파일의 음악을 악보로 옮기기 위해 만든 프로젝트
 - http://zulko.github.io/blog/2014/02/12/transcribing-piano-rolls/
 - http://zulko.github.io/unroll/
 - https://github.com/Zulko/unroll
