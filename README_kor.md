@@ -1,6 +1,6 @@
 music-rnn
 ========
-Machine Learning / Deep Learning - Compose Waltes
+Machine Learning / Deep Learning - Compose Waltz
 >
 - midi files 를 data set 으로 사용하여 midi files 의 notes(음정보) 에 대하여 training 한 후
 - train 된 스타일로 새로운 곡을 컴퓨터가 만들어내도록하는
@@ -113,7 +113,7 @@ music-rnn
 - 기본적으로 train_piano.py 파일을 python 으로 바로 실행시킬 경우
   * /music-rnn/rnn_lstm_jzs1/wts_Waltzes/train_piano_wts_seq_model_2015.11.11.23:52:29.wt
   * 위의 weights 파일을 LSTM(Long Short Term Memory) training model 이 load
-  * 그 후 music-rnn/rnn_lstm_jzs1/data_for_train/waltzes 폴더 안에 있는 midi 형식으로 된 5개의 waltes 곡을 이용하여 training 시작
+  * 그 후 music-rnn/rnn_lstm_jzs1/data_for_train/waltzes 폴더 안에 있는 midi 형식으로 된 5개의 waltz 곡을 이용하여 training 시작
 
 ```python
 $ git clone https://github.com/jamonglab/music-rnn.git
@@ -133,7 +133,7 @@ $ python train_piano.py
     ```
     if iteration % 10 == 0:
     ```
-    * training 실행 시 iteration 을 10번 반복할 때 마다 machine 이 배운 결과 생성된 weight 를 이용하여 새로운 waltes 곡을 composing 하여
+    * training 실행 시 iteration 을 10번 반복할 때 마다 machine 이 배운 결과 생성된 weight 를 이용하여 새로운 waltz 곡을 composing 하여
     ```
     DIR_PREDICTED_MIDI = "./predMidi_Waltzes/"          # save predicted(created) midi file
     ```
@@ -249,4 +249,8 @@ filename_result_predict = DIR_RESULTS + 'rnn_lstm_predict_{0}.txt'.format(dateti
 # ================================================================================
 
 ```
-- 추가로 특정 폴더의 특정 string을 포함한 파일만 training 에 이용하고 싶을 경우 위 소스 코드 중 ```target_str = ""``` 부분에 원하는 파일들이 공통으로 가지고 있는 string 을 적어주면 된다.
+- 추가로 어느 한 폴더의 공통 string을 포함하는 파일만 training 에 이용하고 싶을 경우 위 소스 코드 중 ```target_str = ""``` 부분에 원하는 파일들이 공통으로 가지고 있는 string 을 적어주면 된다.
+  * 예를 들어, 폴더에 'bach001.mid', 'bach002.mid', ... 과 같이 **"bach" ** 를 공통으로 파일 이름에 사용하고 있고,
+  * 이 bach 의 음악들을 trainging 에 사용하고 싶다면,
+  * ```target_str = "bach"```
+  * 위와 같이 소스 코드를 수정해주면 된다.
