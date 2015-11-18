@@ -176,7 +176,7 @@ except:
   * delete music-rnn/rnn_lstm_jzs1_eng/wts_Waltzes/train_piano_wts_seq_model_2015.11.11.23:52:29.wts file
   * or move above file to another path
   * just follow above **Basic Usage**
-- Using another weights file
+- Using other weights file
   * (see above source codes) comment **load automatically block**, and uncomment **load passively block**,
   * next, move other weights file that you want to use for train to DIR_WEIGHTS directory,
   * write the weights file name to **filename_wts = "other_file_name"**,
