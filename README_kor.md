@@ -1,4 +1,5 @@
-[[English](README.md)]  [[한국어](README_kor.md)]
+- README.md : [[ English ](README.md)]  [[ 한국어 ](README_kor.md)]
+- Homepage : [[ Korean Only (한국어) ]](http://jamonlab.com/computer_music/?utm_source=github&utm_medium=link_click&utm_campaign=deeplearning&utm_term=music-rnn&utm_content=README_kor.md)
 
 music-rnn
 ========
