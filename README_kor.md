@@ -2,7 +2,7 @@
 
 music-rnn
 ========
-Machine Learning / Deep Learning - Compose Waltz
+Machine Learning / Deep Learning with RNN(LSTM, JZS1) - Compose Music, Waltz
 >
 - midi files 를 data set 으로 사용하여 midi files 의 notes(음정보) 에 대하여 training 한 후
 - train 된 스타일로 새로운 곡을 컴퓨터가 만들어내도록하는
