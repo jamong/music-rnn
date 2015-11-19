@@ -2,7 +2,7 @@
 
 music-rnn
 ========
-Machine Learning / Deep Learning - Compose Waltz
+Machine Learning / Deep Learning with RNN(LSTM, JZS1) - Compose Music, Waltz
 >
 - After training with notes information of midi files of Data Set,
 - machine will compose simple trained style music.
