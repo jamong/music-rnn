@@ -35,7 +35,7 @@ print "\n... Set Constant Values ..."
 # DIR_TTV = ["/test", "/train", "/valid"]
 
 # examples 1
-# when u want to use "JSB_chorales/train" data for training - uncomment next 2 lines
+# when u want to use "JSB Chorales/train" data for training - uncomment next 2 lines
 # path_train = os.getcwd() + DIR_DATA_SRCs[0] + DIR_TTV[1]
 # path_test = os.getcwd() + DIR_DATA_SRCs[0] + DIR_TTV[0]
 
