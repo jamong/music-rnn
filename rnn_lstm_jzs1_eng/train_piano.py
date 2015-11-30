@@ -31,7 +31,7 @@ print "\n... Set Constant Values ..."
 # when you wanna train model with all midi files at once
 #
 
-# DIR_DATA_SRCs = ["/data/JSB_Chorales", "/data/MuseData", "/data/Nottingham", "/data/Piano-midi.de"]
+# DIR_DATA_SRCs = ["/data/JSB Chorales", "/data/MuseData", "/data/Nottingham", "/data/Piano-midi.de"]
 # DIR_TTV = ["/test", "/train", "/valid"]
 
 # examples 1
