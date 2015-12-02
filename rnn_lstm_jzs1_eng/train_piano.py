@@ -31,11 +31,11 @@ print "\n... Set Constant Values ..."
 # when you wanna train model with all midi files at once
 #
 
-# DIR_DATA_SRCs = ["/data/JSB_Chorales", "/data/MuseData", "/data/Nottingham", "/data/Piano-midi.de"]
+# DIR_DATA_SRCs = ["/data/JSB Chorales", "/data/MuseData", "/data/Nottingham", "/data/Piano-midi.de"]
 # DIR_TTV = ["/test", "/train", "/valid"]
 
 # examples 1
-# when u want to use "JSB_chorales/train" data for training - uncomment next 2 lines
+# when u want to use "JSB Chorales/train" data for training - uncomment next 2 lines
 # path_train = os.getcwd() + DIR_DATA_SRCs[0] + DIR_TTV[1]
 # path_test = os.getcwd() + DIR_DATA_SRCs[0] + DIR_TTV[0]
 
