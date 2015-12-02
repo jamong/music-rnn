@@ -75,7 +75,7 @@ music-rnn
 ├── README.md
 └── rnn_lstm_jzs1
     ├── data
-    │   ├── JSB_Chorales
+    │   ├── JSB Chorales
     │   │   ├── test
     │   │   ├── train
     │   │   └── valid
@@ -187,7 +187,7 @@ except:
 music-rnn
 └── rnn_lstm_jzs1
     ├── data
-    │   ├── JSB_Chorales
+    │   ├── JSB Chorales
     │   │   ├── test
     │   │   ├── train
     │   │   └── valid
