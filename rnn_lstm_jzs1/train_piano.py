@@ -31,7 +31,7 @@ print "\n... Set Constant Values ..."
 # 한 번에 모든 midi files 을 이용하여 train 하고 싶을 경우 다음의 경로 사용.
 #
 
-# DIR_DATA_SRCs = ["/data/JSB_Chorales", "/data/MuseData", "/data/Nottingham", "/data/Piano-midi.de"]
+# DIR_DATA_SRCs = ["/data/JSB Chorales", "/data/MuseData", "/data/Nottingham", "/data/Piano-midi.de"]
 # DIR_TTV = ["/test", "/train", "/valid"]
 
 # examples 1
